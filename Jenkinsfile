@@ -3,6 +3,7 @@ pipeline {
 
     environment {
         PYTHON = "C:\\Users\\Sai Ganesh\\AppData\\Local\\Python\\bin\\python.exe"
+        DOCKER = "C:\\Program Files\\Docker\\Docker\\resources\\bin\\docker.exe"
     }
 
     stages {
@@ -31,7 +32,7 @@ pipeline {
         stage('Build Docker Image') {
             steps {
                 echo 'Building Docker image...'
-                bat 'docker build -t aceest-app .'
+                bat '"%DOCKER%" build -t aceest-app .'
             }
         }
     }
