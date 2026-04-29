@@ -8,9 +8,8 @@ def home():
 
 @app.route("/members")
 def members():
-    return jsonify(["Ravi", "Anita", "John"])
+    return jsonify(["Ravi", "Anita", "John", "Priya"])  # ✅ Added Priya
 
-# ✅ ADD THIS BLOCK HERE
 @app.route("/health")
 def health():
     return jsonify({"status": "healthy"})
