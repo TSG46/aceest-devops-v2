@@ -1,13 +1,13 @@
 # ACEest DevOps Assignment
 
-Submitted by Sai Ganesh T
-Roll No: 2025ht66021
+**Submitted by:** Sai Ganesh T
+**Roll No:** 2025ht66021
 
 ---
 
 ## 📌 Project Overview
 
-This project demonstrates a complete DevOps pipeline for a Flask-based fitness management application. It includes version control, automated testing, CI/CD pipeline, containerization, and Kubernetes deployment.
+This project demonstrates a complete DevOps pipeline for a Flask-based fitness management application. It includes version control, automated testing, CI/CD pipeline, containerization, Kubernetes deployment, and code quality analysis using SonarQube.
 
 ---
 
@@ -20,6 +20,7 @@ This project demonstrates a complete DevOps pipeline for a Flask-based fitness m
 * Docker
 * Docker Hub
 * Kubernetes (Minikube)
+* SonarQube
 
 ---
 
@@ -90,25 +91,85 @@ kubectl rollout undo deployment aceest-app
 
 ---
 
+## 🔍 SonarQube Code Quality Analysis
+
+This project integrates **SonarQube** for static code analysis to ensure code quality and maintainability.
+
+### 🚀 Setup (Docker)
+
+```bash
+docker run -d --name sonarqube -p 9000:9000 sonarqube:lts
+```
+
+Access SonarQube:
+http://localhost:9000
+
+---
+
+### 🔐 Token Generation
+
+* Login to SonarQube
+* Go to: `My Account → Security`
+* Generate a **Project Analysis Token**
+
+---
+
+### ▶️ Run Scan
+
+```bash
+docker run --rm -v "%cd%:/usr/src" sonarsource/sonar-scanner-cli \
+-Dsonar.projectKey=aceest-devops \
+-Dsonar.projectName=ACEest \
+-Dsonar.sources=. \
+-Dsonar.inclusions=app.py \
+-Dsonar.exclusions=**/.git/**,**/__pycache__/**,**/.pytest_cache/** \
+-Dsonar.host.url=http://host.docker.internal:9000 \
+-Dsonar.login=<YOUR_TOKEN>
+```
+
+---
+
+### 📊 Analysis Scope
+
+* File analyzed: `app.py`
+* Language: Python
+
+---
+
+### ✅ Outcome
+
+* Static code analysis executed successfully
+* Code quality metrics evaluated
+* Issues (if any) identified
+
+---
+
+### 📸 Evidence
+
+Screenshot of SonarQube dashboard is included in submission.
+
+---
+
 ## 📊 Key Outcomes
 
 * Automated CI/CD pipeline
 * Containerized application
 * Kubernetes deployment
-* Zero-downtime deployment strategy
+* Code quality analysis using SonarQube
 
 ---
 
 ## ⚠️ Challenges Faced
 
 * Jenkins environment path issues
-* Docker access from Jenkins
-* Kubernetes setup and configuration
+* Docker access configuration
+* Kubernetes setup and deployment
+* SonarQube scan optimization
 
 ---
 
 ## ✅ Conclusion
 
-The project successfully demonstrates a real-world DevOps pipeline with automation, testing, containerization, and deployment strategies.
+This project successfully demonstrates a real-world DevOps pipeline integrating development, testing, containerization, deployment, and code quality analysis. It highlights how automation improves reliability, scalability, and efficiency.
 
 ---
