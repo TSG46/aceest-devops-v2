@@ -13,14 +13,14 @@ pipeline {
         stage('Install Dependencies') {
             steps {
                 echo 'Installing dependencies...'
-                bat 'python -m pip install flask pytest'
+                bat 'py -m pip install flask pytest'
             }
         }
 
         stage('Run Tests') {
             steps {
                 echo 'Running pytest...'
-                bat 'python -m pytest'
+                bat 'py -m pytest'
             }
         }
 
