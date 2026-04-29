@@ -1,6 +1,10 @@
 pipeline {
     agent any
 
+    environment {
+        PYTHON = "C:\\Users\\Sai Ganesh\\AppData\\Local\\Python\\bin\\python.exe"
+    }
+
     stages {
 
         stage('Clone Code') {
@@ -13,14 +17,14 @@ pipeline {
         stage('Install Dependencies') {
             steps {
                 echo 'Installing dependencies...'
-                bat 'py -m pip install flask pytest'
+                bat '"%PYTHON%" -m pip install flask pytest'
             }
         }
 
         stage('Run Tests') {
             steps {
                 echo 'Running pytest...'
-                bat 'py -m pytest'
+                bat '"%PYTHON%" -m pytest'
             }
         }
 
